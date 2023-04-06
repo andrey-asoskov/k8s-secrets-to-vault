@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: secrets-to-vault
+  namespace: secrets-to-vault
+  labels:
+    app: secrets-to-vault

@@ -1,0 +1,13 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  generation: 1
+  labels:
+    app: secrets-to-vault
+  name: secrets-to-vault
+  namespace: secrets-to-vault
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: secrets-to-vault

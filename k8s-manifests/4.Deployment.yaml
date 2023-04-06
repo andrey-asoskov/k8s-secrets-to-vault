@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secrets-to-vault
+  namespace: secrets-to-vault
+  labels:
+    app: secrets-to-vault
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secrets-to-vault
+  template:
+    metadata:
+      labels:
+        app: secrets-to-vault
+    spec:
+      automountServiceAccountToken: true
+      serviceAccountName: secrets-to-vault
+      containers:
+        - name: app
+          image: andreyasoskovwork/secrets-to-vault:0.1.0
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          ports:
+            - name: app
+              containerPort: 3000
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: secrets-to-vault-params
+          volumeMounts:
+          - name: certs-volume
+            readOnly: true
+            mountPath: "/certs"
+      volumes:
+      - name: certs-volume
+        secret:
+          secretName: admission-tls
+      terminationGracePeriodSeconds: 1

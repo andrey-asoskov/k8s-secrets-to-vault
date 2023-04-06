@@ -1,0 +1,47 @@
+# Vim
+**/*.swp
+**/*.swo
+
+# OSX
+**/.DS_Store
+
+# IDE
+#.idea/
+#**/*.ipr
+#**/*.iml
+#**/*.iws
+#.vscode/
+
+
+# Zip
+*.zip
+*.tgz
+*.tar.gz
+
+
+## Python
+**/__pycache__
+*.pyc
+# Installer logs
+pip-log.txt
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+# SQLite databases
+*.sqlite
+# Virtual environment
+venv/
+.venv/
+.env
+
+
+# Common backup files
+*.swp
+*.bak
+*.tmp
+*.orig
+*~
+
+#Temp
+#Temp/
